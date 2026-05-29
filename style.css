@@ -1,0 +1,104 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 15px;
+    background-color: #1a1a1a; 
+}
+
+#product-wrapper {
+    width: 300px;
+    height: 500px;
+    display: flex;
+    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 8px outset lightgrey;
+    border-top: 8px outset grey;
+    border-left: 8px outset grey;
+    border-radius: 20px;
+    background-color: lightgrey;
+}
+
+.productImg {
+    width: 220px;
+    height: 340px;
+    background: #333;
+    border-radius: 20px;
+    transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+    cursor: pointer; 
+}
+
+/* Эффект приподнимания */
+.productImg:hover {
+  transform: translateY(-10px) scale(1.05); /* Поднимаем на 20px и чуть увеличиваем */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Добавляем мягкую тень */
+}
+
+.star-group {
+    margin-top: 10px;
+    display: flex;
+    font-size: 30px;
+    gap: 5px;
+    /* border: 1px solid red; */
+}
+
+.starBtn {
+    /* font-size: 20px; */
+    cursor: pointer;
+    font-weight: 400;
+    transition: color 0.2s ease, transform 0.1s ease;
+}
+
+.starBtn.active {
+    color: #ffcc00;
+}
+
+.starBtn:hover {
+    transform: scale(1.2);
+}
+
+.product-title {
+    width: 205px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.product-price {
+    width: 50px;
+    height: 22px;
+    margin-top: -10px;
+    position: relative;
+    left: -80px;
+    /* border: 1px solid green; */
+    font-weight: 700;
+    font-size: 20px;
+}
+
+@media (max-width: 500px){
+    .product-title {
+        font-size: 16px;
+        position: relative;
+        top: -5px;
+        left: 35px;
+    }
+    .product-price {
+        font-size: 16px;
+        position: relative;
+        left: -45px;
+        top: -5px;
+    }
+    .starBtn {
+        font-size: 15px;
+    }
+    .productImg {
+        width: 110px;
+        height: 150px;
+    }
+    #product-wrapper {
+        width: 150px;
+        height: 250px;
+    }
+}
