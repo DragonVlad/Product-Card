@@ -1,0 +1,141 @@
+@use 'variables';
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    top: 30px;
+    background-color: variables.$bgcolor; 
+}
+
+/* БЛОК: Карточка товара */
+.product-card {
+    width: 100%; //width: 300px;
+    max-width: 300px;
+    height: 480px;
+    display: flex;
+    padding-top: 1.70%;// (20px / 1440px) * 100 //top:20px
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 8px outset variables.$color1;
+    border-top: 8px outset variables.$color2;
+    border-left: 8px outset variables.$color2;
+    border-radius: variables.$borderRadius;
+    background-color: variables.$color1;
+
+    &__img {
+        width: 73.33%; //(220px / 300px) * 100 // width: 220px;
+        height: 68%; //(340px / 500px) * 100 //height: 340px;
+        background: variables.$bgImg;
+        border-radius: variables.$borderRadius;
+        transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+        cursor: pointer; 
+
+        &:hover {
+            transform: translateY(-3.06%) scale(1.05); //(-10px / 326.4px (480px0.68)) * 100 //translateY(-10px)
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    &__rating {
+        margin-top: variables.$marginTop; /* Элемент-микс задает только позицию */
+    }
+
+    &__title {
+        width: 68.33%; //(205px / 300px) * 100 //width: 205px;
+        height: 6%;  //(30px / 500px) * 100 //height: 30px; 
+        margin-top: variables.$marginTop; //(10px / 300px) * 100 //margin-top: 10px;
+    }
+
+    &__price {
+        width: 16.66%; //(50px / 300px) * 100 //width: 50px;
+        height: 4.4%; //(22px / 500px) * 100 //height: 22px;
+        margin-top: variables.$marginTop * -1;
+        position: relative;
+        left: -80px;
+        font-weight: 700;
+        font-size: 1.25rem; //(20px / 16px) //20px
+    }
+}
+
+/* БЛОК: Рейтинг (Полностью независимый) */
+.rating {
+    display: flex;
+    font-size: 1.875rem; //(30px / 16px) //30px
+    gap: 5px;
+    font-weight: 400;
+
+    &__star-btn {
+        cursor: pointer;
+        transition: color 0.2s ease, transform 0.1s ease;
+
+        &--active {
+        color: variables.$activeStarColor;
+        }
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+    
+}
+
+/* МЕДИА-ЗАПРОСЫs */
+@media (max-width: 500px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        margin: 0;
+    }
+    
+    .product-card {
+        width: 40%; //(150px / 375px) * 100 //150px
+        max-width: 150px; /* защита, карточка не станет больше 150px, даже если экран 499px */
+        height: 250px; 
+
+        &__img {
+            width: 73.33%; //(110px / 150px) * 100 //110px
+            height: 60%; //(150px / 250px) * 100 150px
+
+            /* ДОБАВЛЯЕМ СБРОС ХОВЕРА НА МОБИЛКЕ */
+            &:hover {
+                transform: none; 
+                box-shadow: none; 
+                cursor: default; 
+            }
+        }
+        
+        &__title {
+            font-size: 1rem;
+            position: relative;
+            top: -2%; //(5px / 250px) * 100 //-5px
+            left: 10%; //(15px / 150px) * 100 //15px
+        }
+
+        &__price {
+            font-size: 1rem; //16px / 16px //16px
+            position: relative;
+            left: -6.67%; //(10 / 150px) * 100 //-10px
+            top: 4%; //(10 / 250px) * 100 //10px
+        }
+    } 
+
+    .rating {
+        &__star-btn {
+            /* Изменяем элемент рейтинга независимо */
+            font-size: 0.9375rem; //15px / 16px //15px 
+        }
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1060px) {
+    .product-card {
+        /* Увеличиваем отступ над картинкой. 
+           Можно задать в пикселях или в процентах  */
+        padding-top: 5%; 
+    }
+}
